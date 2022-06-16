@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Link from 'next/link';
+import Image from 'next/image';
 import styles from '../styles/Home.module.scss'
 import Top from '../components/Top';
 import Header from '../components/Header';
@@ -7,9 +9,11 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { ScrollControls, Scroll } from '@react-three/drei';
 import { useRef, useState } from 'react'
 
+import { client } from "../libs/client";
 
 
-export default function Home() {
+
+export default function Home({articles}) {
 
   const dumping = 2
 
@@ -79,6 +83,22 @@ export default function Home() {
             <Top />
           </Scroll>
 
+          <Scroll html>
+          <div style={{position: 'absolute', left: '100vw'}}>
+            <ul>
+              {articles.map((article) => (
+                <li key={article.id}>
+                  <img src={`${article.mainVisual.url}`} alt={'eyecatch'} />
+                  <Link href={`/articles/${article.id}`}>
+                    <a>{article.title}</a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+    </div>
+          </Scroll>
+
+
         </ScrollControls>
       </Canvas>
       </div>
@@ -88,3 +108,13 @@ export default function Home() {
 
   )
 }
+
+export const getServerSideProps = async () => {
+  const data = await client.get({ endpoint: 'articles' });
+
+  return {
+    props: {
+      articles: data.contents,
+    },
+  };
+};
