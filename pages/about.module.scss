@@ -1,0 +1,43 @@
+@import '/styles/variable';
+
+.container{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+   background: #eee;
+}
+
+.canvas{
+    width: 50vw;
+    height: 50vh;
+    background: #777;
+    position: absolute;
+    top: 20vh;
+    left: 5rem;
+}
+
+.content{
+    position: absolute;
+    top: 30vh;
+    left: 50vw;
+    width: 50vw;
+    padding-right: 5rem;
+
+    h1, h2{
+        font-family: $noto-serif;
+    }
+    h1{
+        font-size: 3rem;
+    }
+    .line{
+        display: inline-block;
+        width: 2rem;
+        height: 1px;
+        background: $black;
+        margin-top: 1.5rem;
+    }
+    p{
+        margin-top: 1.2rem;
+        line-height: 2;
+    }
+}

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #333;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
